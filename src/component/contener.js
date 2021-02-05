@@ -6,9 +6,7 @@ class Contener extends React.Component {
     key: 0,
     listNotice: [],
   };
-  componentDidMount() {
-    return this.createKeep();
-  }
+  
   componentDidUpdate() {
     if (this.props.state.contener) {
       const newKeep = {

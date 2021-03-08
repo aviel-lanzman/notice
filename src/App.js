@@ -3,29 +3,35 @@ import "./App.css";
 import React from "react";
 import Headers from "./component/Headers";
 import Contener from "./component/contener";
-class App extends React.Component {
-  state = {
-    contener: false,
-    saveValueTitle: "",
-    saveValueContent: "",
+import { useState } from "react";
+const App = () => {
+  const [contener, setContener] = useState(false);
+  const [saveValueContent, setSaveValueContent] = useState("");
+  const [saveValueTitle, setSaveValueTitle] = useState("");
+
+  const SaveKeep = (saveValueTitle, saveValueContent) => {
+    setContener(true);
+    setSaveValueContent(saveValueContent);
+    setSaveValueTitle(saveValueTitle);
   };
-  SaveKeep = (saveValueTitle, saveValueContent) => {
-    this.setState({ saveValueTitle, saveValueContent, contener: true });
+
+  const upContener = () => {
+    setContener({ contener: false });
   };
-  upContener() {
-    this.setState({ contener: false });
+
+  if (contener) {
+    upContener();
   }
-  render() {
-    if (this.state.contener) {
-      this.upContener();
-    }
-    console.log(this.state.contener);
-    return (
-      <>
-        <Headers save={this.SaveKeep} />
-        <Contener state={this.state} />
-      </>
-    );
-  }
-}
+
+  console.log(contener);
+  return (
+    <>
+      <Headers save={SaveKeep} />
+      <Contener
+        saveValueContent={saveValueContent}
+        saveValueTitle={saveValueTitle}
+      />
+    </>
+  );
+};
 export default App;

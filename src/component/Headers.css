@@ -1,35 +1,46 @@
 .input {
+  display: inline-grid;
   width: 20%;
   padding: 12px 20px;
   margin: 2% 20%;
   box-sizing: border-box;
-  border: none;
-  border-bottom: 2px solid #e49191;
+  border-bottom: 2px solid #000000;
   color: rgb(243, 128, 93);
-  background-color: wheat;
+  background-color: rgb(255, 255, 255);
   border-radius: 40px;
 }
-.textarea {
-  width: 20%;
-  padding: 12px 20px;
-  margin: 2% 20%;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 2px solid #e49191;
-  color: rgb(243, 128, 93);
-  background-color: wheat;
-  border-radius: 40px;
-}
-label {
-  margin: 2% 20%;
-  font-size: 2vw;
-}
-.textarea:hover {
-  width: 70%;
-}
+.textarea:hover,
+.title:hover,
 .input:hover {
   width: 70%;
 }
+.title {
+  width: 80%;
+  /* padding: 12px 20px; */
+  /* margin: 2% 20%; */
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #e49191;
+  color: rgb(243, 128, 93);
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+}
+.textarea {
+  width: 80%;
+  /* padding: 12px 20px; */
+  /* margin: 2% 20%; */
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #e49191;
+  color: rgb(243, 128, 93);
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+}
+
+.textarea:hover {
+  width: 70%;
+}
+
 button {
   border-radius: 40px;
   border: none;

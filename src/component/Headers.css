@@ -1,4 +1,4 @@
-.input {
+/* .input {
   display: inline-grid;
   width: 20%;
   padding: 12px 20px;
@@ -15,10 +15,10 @@
   width: 70%;
 }
 .title {
-  width: 80%;
-  /* padding: 12px 20px; */
-  /* margin: 2% 20%; */
-  box-sizing: border-box;
+  width: 80%; */
+/* padding: 12px 20px; */
+/* margin: 2% 20%; */
+/* box-sizing: border-box;
   border: none;
   border-bottom: 2px solid #e49191;
   color: rgb(243, 128, 93);
@@ -26,10 +26,10 @@
   border-radius: 40px;
 }
 .textarea {
-  width: 80%;
-  /* padding: 12px 20px; */
-  /* margin: 2% 20%; */
-  box-sizing: border-box;
+  width: 80%; */
+/* padding: 12px 20px; */
+/* margin: 2% 20%; */
+/* box-sizing: border-box;
   border: none;
   border-bottom: 2px solid #e49191;
   color: rgb(243, 128, 93);
@@ -50,4 +50,4 @@ button {
 button:hover {
   color: aqua;
   background-color: brown;
-}
+} */

@@ -1,7 +1,11 @@
 import { PageHeader, Menu, Dropdown, Button, Tag, Typography, Row } from "antd";
-import { EllipsisOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, EllipsisOutlined } from "@ant-design/icons";
 import Serch from "./serch";
 import MyMenu from "./Menu";
+import IconsTitle from "./iconsTitle";
+import MenuButten from "./menuButten";
+import { Avatar } from "@material-ui/core";
+import MyAvatar from "./avater";
 
 const { Paragraph } = Typography;
 
@@ -61,24 +65,27 @@ const IconLink = ({ src, text }) => (
 const Title = () => {
   const userAvatar = {};
   return (
-    <div class="title">
-      <PageHeader
+    <div
+      class="title"
+      style={{ background: "blanchedalmond", display: "flex", padding: "20px" }}
+    >
+      {/* <PageHeader
+        className="site-page-header"
         //   dir="rtl"
         // style={{ display: "contents" }}
-        title="Title"
-        className="site-page-header"
-        tags={<Tag color="blue">Running</Tag>}
-        subTitle={<Serch />}
-        extra={[
-          <Button key="3">aaaaaaa</Button>,
-          <Button key="2">bbbbbbb</Button>,
-          ,
-        ]}
+        // title={[<IconsTitle />]}
+        // tags={<Tag color="blue">Running</Tag>}
+        subTitle="ttttt"
         avatar={{
           src: userAvatar.src,
         }}
-      ></PageHeader>
-      <MyMenu />
+        // extra={[<MenuButten />]}
+      > */}
+      <MyAvatar />
+      <IconsTitle />
+      <Serch />
+      <MenuButten style={{ background: "blanchedalmond", marginTop: "14px" }} />
+      {/* </PageHeader> */}
     </div>
   );
 };

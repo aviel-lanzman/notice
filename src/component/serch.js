@@ -30,7 +30,13 @@ export default function Serch() {
   const classes = useStyles();
 
   return (
-    <Paper component="form" className={classes.root} style={{}}>
+    <Paper
+      component="form"
+      className={classes.root}
+      style={{
+        margin: "14px 25% 5px 21%",
+      }}
+    >
       <InputBase
         className={classes.input}
         placeholder="Search nots"

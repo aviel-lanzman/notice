@@ -1,6 +1,20 @@
-import { useRef, useState } from "react";
+import { Button } from "antd";
+import React, { useRef, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
 
 const Home = () => {
+  const classes = useStyles();
+
   const [createNote, setCreateNote] = useState([
     {
       id: Number,
@@ -41,36 +55,92 @@ const Home = () => {
   console.log(contener);
   return (
     <div>
-      <div>Home</div>
-      <div dir="rtl" className="input-notice">
-        <form>
-          <div className="input">
-            <input
-              className="title"
-              type="text"
-              placeholder="הכנס כותרת"
-              value={valueTitle}
-              onChange={inputTitle}
-            ></input>
-            <textarea
-              className="textarea"
-              type="text"
-              placeholder="כתוב הערה"
-              value={valueContent}
-              onChange={inputContent}
-              cols={valueContent.length}
-              rows="5"
-            ></textarea>
-          </div>
-          <div>
-            <button dir="ltr" onClick={() => SaveKeep()}>
-              שמור פתק
-            </button>
-          </div>
-        </form>
+      <div
+        class="input"
+        style={{
+          // display: "flex",
+          margin: "5px 25%",
+        }}
+      >
+        {/* <form className={classes.root} noValidate autoComplete="off"> */}
+        <div class="inpuot-title">
+          <TextField
+            id="1"
+            label="title"
+            placeholder="הכנס כותרת"
+            value={valueTitle}
+            onChange={inputTitle}
+          />
+        </div>
+        <div class="inpuot-text">
+          <TextField
+            id="2"
+            label="text"
+            placeholder="הכנס תוכן"
+            value={valueContent}
+            onChange={inputContent}
+            cols={valueContent.length}
+          />
+        </div>
+        <div class="save-new-note">
+          <button
+            dir="ltr"
+            onClick={() => SaveKeep()}
+            style={{ margin: "auto", margin: "2% 11%" }}
+          >
+            שמור פתק
+          </button>
+        </div>
+        {/* </form> */}
       </div>
-      {/* {allNote} */}
+
+      {createNote.map((note) => (
+        <>
+          <div
+            class="this-note"
+            style={{
+              padding: "10px",
+              background: "#fff",
+              borderStyle: "solid",
+              borderColor: "coral",
+              margin: "10px",
+              display: "inline-grid",
+            }}
+          >
+            <span>
+              <div>title:</div>
+              {note.ValueTitle}
+            </span>
+            <br />
+            <span>
+              <div>text:</div>
+              {note.ValueContent}
+            </span>
+          </div>
+        </>
+      ))}
     </div>
   );
 };
 export default Home;
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     "& > *": {
+//       margin: theme.spacing(1),
+//       width: "25ch",
+//     },
+//   },
+// }));
+
+// export function BasicTextFields() {
+//   const classes = useStyles();
+
+//   return (
+//     <form className={classes.root} noValidate autoComplete="off">
+//       <TextField id="standard-basic" label="Standard" />
+//       <TextField id="filled-basic" label="Filled" variant="filled" />
+//       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+//     </form>
+//   );
+// }

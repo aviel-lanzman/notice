@@ -25,108 +25,66 @@ const archive = "/archive";
 const trash = "/trash";
 
 const styleButton = {
-  // styleButton,
   width: "100%",
   height: "auto",
   display: "flex",
+  padding: "20px 0px 20px 20px",
+  margin: "5px 0px 5px 5px",
 };
-// [`width: ${"100%"} `];
-const MyMenu = ({ SaveKeep }) => {
-  const [collapsed, setCollapsed] = useState(false);
+
+const Sidebar = ({ SaveKeep }) => {
   const [contener, setContener] = useState(<Headers save={SaveKeep} />);
   const [headers, setHeaders] = useState("הערות");
-  const toggleCollapsed = () => {
-    console.log(collapsed);
-    setCollapsed(!collapsed);
-  };
-  console.log(styleButton);
+
+  const list = [
+    {
+      func: { header: "הערות", contener: <Home /> },
+      icon: <BulbOutlined />,
+      text: "הערות",
+    },
+    {
+      func: { header: "תזכורות", contener: <Reminders /> },
+      icon: <BellOutlined />,
+      text: "תזכורות",
+    },
+    {
+      func: { header: "עריכת תוית", contener: <Home /> },
+      icon: <ContainerOutlined />,
+      text: "עריכת תוית",
+    },
+    {
+      func: { header: "ארכיון", contener: <Archiv /> },
+      icon: <ContainerOutlined />,
+      text: "ארכיון",
+    },
+    {
+      func: { header: "אשפה", contener: <Trash /> },
+      icon: <RestOutlined />,
+      text: "אשפה",
+    },
+  ];
+  const allButton = list.map((button) => (
+    <div
+      onClick={() => {
+        console.log(button.text);
+        setHeaders(button.func.header);
+        setContener(button.func.contener);
+      }}
+    >
+      <div>
+        <Button style={styleButton}>
+          <div>{button.icon}</div>
+          <div>{button.text}</div>
+        </Button>
+      </div>
+    </div>
+  ));
   return (
     <>
       <div class="menu" dir="rtl">
-        <div
-          onClick={() => {
-            console.log("home");
-            setHeaders("הערות");
-            setContener(<Home />);
-          }}
-        >
-          <div>
-            <Button style={styleButton}>
-              <div>
-                <BulbOutlined />
-              </div>
-              <div>הערות</div>
-            </Button>
-          </div>
-        </div>
-        <div
-          onClick={() => {
-            console.log("Reminders");
-            setHeaders("תזכורות");
-            setContener(<Reminders />);
-          }}
-        >
-          <div>
-            <Button style={styleButton}>
-              <div>
-                <BellOutlined />
-              </div>
-              <div>תזכורות</div>
-            </Button>
-          </div>
-        </div>
-        <div
-          onClick={() => {
-            console.log("home");
-            setHeaders("עריכת תוית");
-            // setContener(<Reminders />);
-          }}
-        >
-          <div>
-            <Button style={styleButton}>
-              <div>
-                <ContainerOutlined />
-              </div>
-              <div>עריכת תוית</div>
-            </Button>
-          </div>
-        </div>
-        <div
-          onClick={() => {
-            console.log("Archiv");
-            setHeaders("ארכיון");
-            setContener(<Archiv />);
-          }}
-        >
-          <div>
-            <Button style={styleButton}>
-              <div>
-                <ContainerOutlined />
-              </div>
-              <div>ארכיון</div>
-            </Button>
-          </div>
-        </div>
-        <div
-          onClick={() => {
-            console.log("Trash");
-            setHeaders("אשפה");
-            setContener(<Trash />);
-          }}
-        >
-          <Button style={styleButton}>
-            <div>
-              <RestOutlined />
-            </div>
-            אשפה<div></div>
-          </Button>
-        </div>
-
-        {/* <div style={{ padding: "54px", display: "table-caption" }}>
-          {contener}
-        </div> */}
+        {allButton}
       </div>
     </>
   );
 };
-export default MyMenu;
+export default Sidebar;

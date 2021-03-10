@@ -2,6 +2,7 @@ import { Button } from "antd";
 import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,9 +18,9 @@ const Home = () => {
 
   const [createNote, setCreateNote] = useState([
     {
-      id: Number,
-      ValueTitle: "",
-      ValueContent: "",
+      // id: Number,
+      // ValueTitle: "",
+      // ValueContent: "",
     },
   ]);
   const [contener, setContener] = useState(false);
@@ -38,6 +39,9 @@ const Home = () => {
       },
     ]);
   };
+  const DeleteThisNote = (event) => {
+    console.log(event);
+  };
   const inputTitle = (event) => {
     setValueTitle(event.target.value);
   };
@@ -52,18 +56,52 @@ const Home = () => {
     setValueTitle("");
     setValueContent("");
   };
+  const NoteDisplay = createNote.map((note) => (
+    <>
+      <div
+        className="this-note"
+        style={{
+          padding: "10px",
+          background: "#fff",
+          borderStyle: "solid",
+          borderColor: "coral",
+          margin: "10px",
+          display: "inline-grid",
+          borderRadius: "5px",
+        }}
+      >
+        <span>
+          <div>title:</div>
+          {note.ValueTitle}
+        </span>
+        <br />
+        <span>
+          <div>text:</div>
+          {note.ValueContent}
+        </span>
+        <div className="notes-icons" style={{ display: "flex" }}>
+          <Button onClick={() => SaveKeep()}>
+            <EditOutlined />
+          </Button>
+          <Button onClick={(event) => DeleteThisNote(event)}>
+            <DeleteOutlined />
+          </Button>
+        </div>
+      </div>
+    </>
+  ));
   console.log(contener);
   return (
-    <div>
+    <div dir="ltr">
       <div
-        class="input"
+        className="input"
         style={{
           // display: "flex",
           margin: "5px 25%",
         }}
       >
         {/* <form className={classes.root} noValidate autoComplete="off"> */}
-        <div class="inpuot-title">
+        <div className="inpuot-title">
           <TextField
             id="1"
             label="title"
@@ -72,7 +110,7 @@ const Home = () => {
             onChange={inputTitle}
           />
         </div>
-        <div class="inpuot-text">
+        <div className="inpuot-text">
           <TextField
             id="2"
             label="text"
@@ -82,65 +120,20 @@ const Home = () => {
             cols={valueContent.length}
           />
         </div>
-        <div class="save-new-note">
-          <button
+        <div className="save-new-note">
+          <Button
             dir="ltr"
             onClick={() => SaveKeep()}
             style={{ margin: "auto", margin: "2% 11%" }}
           >
             שמור פתק
-          </button>
+          </Button>
         </div>
         {/* </form> */}
       </div>
 
-      {createNote.map((note) => (
-        <>
-          <div
-            class="this-note"
-            style={{
-              padding: "10px",
-              background: "#fff",
-              borderStyle: "solid",
-              borderColor: "coral",
-              margin: "10px",
-              display: "inline-grid",
-            }}
-          >
-            <span>
-              <div>title:</div>
-              {note.ValueTitle}
-            </span>
-            <br />
-            <span>
-              <div>text:</div>
-              {note.ValueContent}
-            </span>
-          </div>
-        </>
-      ))}
+      {NoteDisplay}
     </div>
   );
 };
 export default Home;
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     "& > *": {
-//       margin: theme.spacing(1),
-//       width: "25ch",
-//     },
-//   },
-// }));
-
-// export function BasicTextFields() {
-//   const classes = useStyles();
-
-//   return (
-//     <form className={classes.root} noValidate autoComplete="off">
-//       <TextField id="standard-basic" label="Standard" />
-//       <TextField id="filled-basic" label="Filled" variant="filled" />
-//       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-//     </form>
-//   );
-// }

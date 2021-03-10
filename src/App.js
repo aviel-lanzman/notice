@@ -7,10 +7,10 @@ import { useState } from "react";
 import "antd/dist/antd.css";
 // import { Route, Router, Switch } from "react-router";
 // import { Link } from "react-router-dom";
-import MyMenu from "./component/Menu";
 import Title from "./component/title";
 import Headers from "./component/Headers";
 import Home from "./component/Home/Home";
+import Sidebar from "./component/Menu";
 
 const App = () => {
   const [listNote, setListNote] = useState({});
@@ -18,11 +18,23 @@ const App = () => {
     <>
       <Title />
 
-      <div class="contener" style={{ display: "flex", direction: "rtl" }}>
-        <div class="my-menu" style={{ background: "burlywood" }}>
-          <MyMenu />
+      <div className="contener" style={{ display: "flex", direction: "rtl" }}>
+        <div
+          className="Sidebar"
+          style={{
+            background: "burlywood",
+            padding: "20px 0 20px 20px",
+            height: "100%",
+            width: "160px",
+            position: "fixed",
+            zIndex: "1",
+            right: "0",
+            overflowX: "hidden",
+          }}
+        >
+          <Sidebar />
         </div>
-        <div class="home" style={{ width: "1040px", margin: "5px auto" }}>
+        <div className="home" style={{ width: "1040px", margin: "5px auto" }}>
           <Home />
         </div>
       </div>
@@ -30,8 +42,3 @@ const App = () => {
   );
 };
 export default App;
-
-//     <Contener
-//       saveValueContent={saveValueContent}
-//       saveValueTitle={saveValueTitle}
-//     />

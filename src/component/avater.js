@@ -1,10 +1,13 @@
-import { Avatar, Button } from "@material-ui/core";
+import { Avatar, Button, IconButton } from "@material-ui/core";
 
 const MyAvatar = () => {
   return (
-    <Button style={{}}>
+    // <Button style={{}}>
+
+    <IconButton type="submit" aria-label="avatar">
       <Avatar />
-    </Button>
+    </IconButton>
+    // {/* </Button> */}
   );
 };
 export default MyAvatar;

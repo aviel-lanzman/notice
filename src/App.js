@@ -34,9 +34,9 @@ const App = () => {
         >
           <Sidebar />
         </div>
-        <div className="home" style={{ width: "1040px", margin: "5px auto" }}>
-          <Home />
-        </div>
+      </div>
+      <div className="home" style={{ width: "1040px", margin: "5px auto" }}>
+        <Home />
       </div>
     </>
   );

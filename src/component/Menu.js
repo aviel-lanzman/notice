@@ -32,8 +32,8 @@ const styleButton = {
   margin: "5px 0px 5px 5px",
 };
 
-const Sidebar = ({ SaveKeep }) => {
-  const [contener, setContener] = useState(<Headers save={SaveKeep} />);
+const Sidebar = () => {
+  const [contener, setContener] = useState("");
   const [headers, setHeaders] = useState("הערות");
 
   const list = [
@@ -65,6 +65,7 @@ const Sidebar = ({ SaveKeep }) => {
   ];
   const allButton = list.map((button) => (
     <div
+      key={button.text}
       onClick={() => {
         console.log(button.text);
         setHeaders(button.func.header);
@@ -81,7 +82,7 @@ const Sidebar = ({ SaveKeep }) => {
   ));
   return (
     <>
-      <div class="menu" dir="rtl">
+      <div className="menu" dir="rtl">
         {allButton}
       </div>
     </>

@@ -3,11 +3,12 @@ import Serch from "./serch";
 import IconsTitle from "./iconsTitle";
 import MenuButten from "./menuButten";
 import MyAvatar from "./avater";
+import { IconButton } from "@material-ui/core";
 
 const Title = () => {
   return (
     <div
-      class="title"
+      className="title"
       style={{ background: "blanchedalmond", display: "flex", padding: "20px" }}
     >
       <MyAvatar />

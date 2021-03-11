@@ -15,18 +15,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-
-  const [createNote, setCreateNote] = useState([
-    {
-      // id: Number,
-      // ValueTitle: "",
-      // ValueContent: "",
-    },
-  ]);
+  const [createNote, setCreateNote] = useState([]);
+  // const [createNote, setCreateNote] = useState([]);
   const [contener, setContener] = useState(false);
   const [valueContent, setValueContent] = useState("");
   const [valueTitle, setValueTitle] = useState("");
-  console.log(createNote);
+
   const SaveKeep = () => {
     clerValue();
     setContener(true);
@@ -39,9 +33,12 @@ const Home = () => {
       },
     ]);
   };
-  const DeleteThisNote = (event) => {
-    console.log(event);
+  const deleteThisNote = (thisNote) => {
+    const indexNote = createNote.indexOf(thisNote);
+    createNote.splice(indexNote, 1);
+    setContener(true);
   };
+
   const inputTitle = (event) => {
     setValueTitle(event.target.value);
   };
@@ -59,6 +56,7 @@ const Home = () => {
   const NoteDisplay = createNote.map((note) => (
     <>
       <div
+        key={note.id}
         className="this-note"
         style={{
           padding: "10px",
@@ -83,14 +81,14 @@ const Home = () => {
           <Button onClick={() => SaveKeep()}>
             <EditOutlined />
           </Button>
-          <Button onClick={(event) => DeleteThisNote(event)}>
+          <Button onClick={() => deleteThisNote(note)}>
             <DeleteOutlined />
           </Button>
         </div>
       </div>
     </>
   ));
-  console.log(contener);
+  // console.log(contener);
   return (
     <div dir="ltr">
       <div

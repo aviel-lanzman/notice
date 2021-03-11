@@ -49,7 +49,11 @@ export default function Serch() {
       >
         <SearchIcon />
       </IconButton>
-      <Divider className={classes.divider} orientation="vertical" />
+      <Divider
+        className={classes.divider}
+        orientation="vertical"
+        style={{ width: "0" }}
+      />
     </Paper>
   );
 }

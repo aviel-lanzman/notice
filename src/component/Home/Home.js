@@ -1,8 +1,9 @@
-import { Button } from "antd";
+import { Button, Alert, Space, Card } from "antd";
 import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import EditNote from "../EditNote";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,14 +14,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// <div className="site-card-border-less-wrapper">
+//   <Card title="Card title" bordered={false} style={{ width: 300 }}>
+//     <p>Card content</p>
+//     <p>Card content</p>
+//     <p>Card content</p>
+//   </Card>
+// </div>,
+
 const Home = () => {
   const classes = useStyles();
   const [createNote, setCreateNote] = useState([]);
   // const [createNote, setCreateNote] = useState([]);
   const [contener, setContener] = useState(false);
-  const [valueContent, setValueContent] = useState("");
   const [valueTitle, setValueTitle] = useState("");
-
+  const [ValueText, setValueText] = useState("");
+  console.log(ValueText, valueTitle);
   const SaveKeep = () => {
     clerValue();
     setContener(true);
@@ -29,21 +38,32 @@ const Home = () => {
       {
         id: createNote.length,
         ValueTitle: valueTitle,
-        ValueContent: valueContent,
+        ValueText: ValueText,
       },
     ]);
   };
+
   const deleteThisNote = (thisNote) => {
     const indexNote = createNote.indexOf(thisNote);
     createNote.splice(indexNote, 1);
     setContener(true);
   };
 
+  const editNotes = (thisNote, editNote) => {
+    console.log(editNote);
+    const indexNote = createNote.indexOf(thisNote);
+    createNote.splice(indexNote, 1, editNote);
+    clerValue();
+    setContener(true);
+  };
   const inputTitle = (event) => {
+    console.log(event.target.value);
     setValueTitle(event.target.value);
   };
   const inputContent = (event) => {
-    setValueContent(event.target.value);
+    console.log(event.target.value);
+
+    setValueText(event.target.value);
   };
   if (contener) {
     setContener(false);
@@ -51,7 +71,7 @@ const Home = () => {
 
   const clerValue = () => {
     setValueTitle("");
-    setValueContent("");
+    setValueText("");
   };
   const NoteDisplay = createNote.map((note) => (
     <>
@@ -75,12 +95,17 @@ const Home = () => {
         <br />
         <span>
           <div>text:</div>
-          {note.ValueContent}
+          {note.ValueText}
         </span>
         <div className="notes-icons" style={{ display: "flex" }}>
-          <Button onClick={() => SaveKeep()}>
-            <EditOutlined />
-          </Button>
+          <EditNote
+            note={note}
+            // inputTitle={inputTitle}
+            // inputContent={inputContent}
+            editNotes={editNotes}
+            valueTitle={valueTitle}
+            ValueText={ValueText}
+          />
           <Button onClick={() => deleteThisNote(note)}>
             <DeleteOutlined />
           </Button>
@@ -88,6 +113,7 @@ const Home = () => {
       </div>
     </>
   ));
+
   // console.log(contener);
   return (
     <div dir="ltr">
@@ -113,9 +139,9 @@ const Home = () => {
             id="2"
             label="text"
             placeholder="הכנס תוכן"
-            value={valueContent}
+            value={ValueText}
             onChange={inputContent}
-            cols={valueContent.length}
+            cols={ValueText.length}
           />
         </div>
         <div className="save-new-note">

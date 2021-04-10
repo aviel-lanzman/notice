@@ -7,13 +7,14 @@ import {
   BarsOutlined,
 } from "@ant-design/icons";
 
-const MenuButten = () => {
+const MenuButton = ({ setShowSidebar, showSidebar }) => {
+  console.log(showSidebar);
   return (
     <>
-      <Button shape="round">
+      <Button shape="round" onClick={() => setShowSidebar(!showSidebar)}>
         <BarsOutlined />
       </Button>
     </>
   );
 };
-export default MenuButten;
+export default MenuButton;

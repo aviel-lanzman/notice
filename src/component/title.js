@@ -1,11 +1,11 @@
 import { PageHeader, Menu, Dropdown, Button, Tag, Typography, Row } from "antd";
-import Serch from "./serch";
+import Search from "./search";
 import IconsTitle from "./iconsTitle";
-import MenuButten from "./menuButten";
+import MenuButton from "./menuButten";
 import MyAvatar from "./avater";
 import { IconButton } from "@material-ui/core";
 
-const Title = () => {
+const Title = ({ showSidebar, setShowSidebar }) => {
   return (
     <div
       className="title"
@@ -13,8 +13,12 @@ const Title = () => {
     >
       <MyAvatar />
       <IconsTitle />
-      <Serch />
-      <MenuButten style={{ background: "blanchedalmond", marginTop: "14px" }} />
+      <Search />
+      <MenuButton
+        style={{ background: "blanchedalmond", marginTop: "14px" }}
+        showSidebar={showSidebar}
+        setShowSidebar={setShowSidebar}
+      />
     </div>
   );
 };

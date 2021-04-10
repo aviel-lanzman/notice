@@ -4,6 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import EditNote from "../EditNote";
+import { IconButton } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -106,9 +108,9 @@ const Home = () => {
             valueTitle={valueTitle}
             ValueText={ValueText}
           />
-          <Button onClick={() => deleteThisNote(note)}>
-            <DeleteOutlined />
-          </Button>
+          <IconButton aria-label="delete" onClick={() => deleteThisNote(note)}>
+            <DeleteIcon />
+          </IconButton>
         </div>
       </div>
     </>

@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Serch() {
+export default function Search() {
   const classes = useStyles();
 
   return (
@@ -39,8 +39,8 @@ export default function Serch() {
     >
       <InputBase
         className={classes.input}
-        placeholder="Search nots"
-        inputProps={{ "aria-label": "search nots" }}
+        placeholder="חיפוש הערה"
+        inputProps={{ "aria-label": "חיפוש הערה" }}
       />
       <IconButton
         type="submit"
